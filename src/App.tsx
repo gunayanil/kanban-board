@@ -1,9 +1,23 @@
 import React from 'react';
 import { useAppState } from './AppStateContext';
 import { AddNewItem } from './components/AddNewItem';
-import { Card } from './components/Card';
 import { Column } from './components/Column';
 import { MainContainer } from './styles';
+
+interface Task {
+  id: string;
+  text: string;
+}
+
+interface List {
+  id: string;
+  text: string;
+  tasks: Task[];
+}
+
+export interface AppState {
+  lists: List[];
+}
 
 const App = () => {
   const { state, dispatch } = useAppState();

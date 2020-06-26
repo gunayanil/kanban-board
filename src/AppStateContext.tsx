@@ -1,5 +1,6 @@
 import React, { createContext, useReducer, useContext } from 'react';
 import { nanoid } from 'nanoid';
+import { AppState } from './App';
 import { findItemIndexById } from './utils/findItemIndexById';
 
 // passing two interfaces with "|", Action can resolve one of them
@@ -12,21 +13,6 @@ type Action =
       type: 'ADD_TASK';
       payload: { text: string; listId: string };
     };
-
-interface Task {
-  id: string;
-  text: string;
-}
-
-interface List {
-  id: string;
-  text: string;
-  tasks: Task[];
-}
-
-export interface AppState {
-  lists: List[];
-}
 
 interface AppStateContextProps {
   state: AppState;
