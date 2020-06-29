@@ -3,6 +3,8 @@ import { useAppState } from './AppStateContext';
 import { AddNewItem } from './components/AddNewItem';
 import { Column } from './components/Column';
 import { MainContainer } from './styles';
+import { DragItem } from './DragItem';
+import CustomDragLayer from './components/CustomDragLayer';
 
 interface Task {
   id: string;
@@ -17,6 +19,7 @@ interface List {
 
 export interface AppState {
   lists: List[];
+  draggedItem: DragItem | undefined;
 }
 
 const App = () => {
@@ -24,6 +27,7 @@ const App = () => {
 
   return (
     <MainContainer>
+      <CustomDragLayer />
       {state.lists.map((list, i) => (
         <Column id={list.id} text={list.text} key={list.id} index={i} />
       ))}
